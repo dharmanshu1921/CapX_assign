@@ -73,6 +73,9 @@ Overall, this model demonstrates excellent performance in predicting stock marke
 ##Topic Analysis
 ![Topics](https://github.com/dharmanshu1921/CapX_assign/blob/main/photos/topic_description.png)
 
+##word Cloud
+(https://github.com/dharmanshu1921/CapX_assign/blob/main/photos/wordcloud.png)
+
 
 ### Feature Importance
 Top predictive features:
