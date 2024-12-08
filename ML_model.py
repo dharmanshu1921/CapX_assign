@@ -6,7 +6,7 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.pipeline import make_pipeline
 
-file_path = '/Users/dharmanshusingh/Downloads/CapX/reddit_data_with_sentiment_and_topics.csv'  
+file_path = 'reddit_data_with_sentiment_and_topics.csv'  
 reddit_data = pd.read_csv(file_path)
 
 def sentiment_to_movement(polarity):
