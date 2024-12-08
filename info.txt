@@ -1,0 +1,4 @@
+python -m venv capx
+source capx/bin/activate
+
+/usr/local/bin/chromedriver
