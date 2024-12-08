@@ -155,8 +155,6 @@ streamlit run app.py
 4. Push to branch
 5. Create pull request
 
-## License
-MIT License - See [LICENSE.md](LICENSE.md) for details
 
 ## Future Roadmap
 - [ ] Real-time streaming analysis
@@ -165,5 +163,5 @@ MIT License - See [LICENSE.md](LICENSE.md) for details
 - [ ] Enhanced visualization techniques
 
 ## Contact
-Maintainer: [Your Name]
-Email: [your.email@example.com]
+Maintainer: Dharmanshu Singh
+Email: dharmanshus1012@gmail.com
