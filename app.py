@@ -6,30 +6,25 @@ from sklearn.preprocessing import LabelEncoder
 import plotly.express as px
 import plotly.graph_objs as go
 
-# Load the pre-trained model and feature names
 @st.cache_resource
 def load_model_and_features():
     try:
         model = joblib.load('stock_movement_predictor_model.pkl')
         
-        # Load the original training data to get the exact feature names
         file_path = 'reddit_data_with_sentiment_and_topics.csv'  
         reddit_data = pd.read_csv(file_path)
         
-        # Preprocess data to get the exact feature columns used during training
         features = ['sentiment_polarity', 'sentiment_subjectivity', 'title_length', 'upvotes', 'comments', 'topic']
-        X = pd.get_dummies(reddit_data[features], columns=['topic'])
+        X = pd.get_dummies(reddit_data[features], columns=['topic'], drop_first=True)
         
         return model, X.columns.tolist(), reddit_data
     except FileNotFoundError:
         st.error("Model file or training data not found. Please train the model first.")
         return None, None, None
 
-# Function to preprocess input
 def preprocess_input(model_features, 
                      sentiment_polarity, sentiment_subjectivity, 
                      title_length, upvotes, comments, selected_topic):
-    # Create a DataFrame with the input data
     input_data = pd.DataFrame({
         'sentiment_polarity': [sentiment_polarity],
         'sentiment_subjectivity': [sentiment_subjectivity],
@@ -38,23 +33,19 @@ def preprocess_input(model_features,
         'comments': [comments]
     })
     
-    # Add topic columns with one-hot encoding
     for feature in model_features:
         if feature.startswith('topic_'):
             topic_num = int(feature.split('_')[1])
             input_data[feature] = 1 if topic_num == selected_topic else 0
-    
-    # Ensure columns are in the exact order of training features
+
     input_data = input_data[model_features]
     
     return input_data
 
-# Main Streamlit app
 def main():
-    # Set page configuration
+
     st.set_page_config(page_title="Stock Movement Sentiment Predictor", page_icon="📈", layout="wide")
     
-    # Title and introduction
     st.title("🚀 Stock Movement Sentiment Predictor")
     st.markdown("""
     ### Predicting Stock Movements through Social Media Sentiment Analysis
@@ -63,26 +54,20 @@ def main():
     We extract insights from user-generated content, including sentiment, discussion topics, and engagement metrics.
     """)
     
-    # Load the model and data
     model, model_features, reddit_data = load_model_and_features()
     if model is None or model_features is None or reddit_data is None:
         return
     
-    # Create tabs
     tab1, tab2, tab3 = st.tabs(["Prediction", "Data Insights", "About Project"])
     
     with tab1:
-        # Prediction Section
         st.header("🔮 Stock Movement Prediction")
         
-        # Sidebar for input features
         col1, col2 = st.columns(2)
         
         with col1:
-            # Extract unique topics from feature names
             topics = [int(feature.split('_')[1]) for feature in model_features if feature.startswith('topic_')]
             
-            # Input widgets
             sentiment_polarity = st.slider(
                 'Sentiment Polarity', 
                 min_value=-1.0, 
@@ -133,9 +118,7 @@ def main():
                 help="Categorization of the social media content"
             )
         
-        # Prediction button
         if st.button('Predict Stock Movement'):
-            # Preprocess input
             input_data = preprocess_input(
                 model_features,
                 sentiment_polarity, 
@@ -146,15 +129,12 @@ def main():
                 selected_topic
             )
             
-            # Make prediction
             prediction = model.predict(input_data)
             
-            # Decode the prediction
             le = LabelEncoder()
             le.fit(['Stock Down', 'Neutral', 'Stock Up'])
             predicted_movement = le.inverse_transform(prediction)[0]
             
-            # Display prediction
             st.header('Prediction Results')
             
             if predicted_movement == 'Stock Up':
@@ -164,7 +144,6 @@ def main():
             else:
                 st.warning(f'Predicted Stock Movement: {predicted_movement} ➡️')
             
-            # Show prediction probabilities
             probabilities = model.predict_proba(input_data)
             st.subheader('Movement Probabilities')
             
@@ -173,7 +152,6 @@ def main():
                 'Probability': probabilities[0]
             })
             
-            # Create a bar chart of probabilities
             fig = px.bar(
                 prob_df, 
                 x='Movement', 
@@ -190,10 +168,8 @@ def main():
             st.plotly_chart(fig)
     
     with tab2:
-        # Data Insights Section
         st.header("📊 Data Insights")
         
-        # Topic Distribution
         st.subheader("Topic Distribution")
         topic_dist = reddit_data['topic'].value_counts()
         fig_topic = px.pie(
@@ -203,7 +179,6 @@ def main():
         )
         st.plotly_chart(fig_topic)
         
-        # Sentiment Distribution
         st.subheader("Sentiment Distribution")
         fig_sentiment = go.Figure()
         fig_sentiment.add_trace(go.Histogram(
@@ -218,7 +193,6 @@ def main():
         st.plotly_chart(fig_sentiment)
     
     with tab3:
-        # Project Description
         st.header("🌐 Project Overview")
         st.markdown("""
         ### Stock Movement Analysis via Social Media Sentiment
@@ -248,6 +222,5 @@ def main():
         - Always combine with traditional financial analysis
         """)
 
-# Run the app
 if __name__ == '__main__':
     main()
