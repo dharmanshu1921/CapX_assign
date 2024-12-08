@@ -11,9 +11,8 @@ CapX is an advanced Python-based project that leverages machine learning and nat
 - [Model Performance](#model-performance)
 - [Technologies Used](#technologies-used)
 - [Data Pipeline](#data-pipeline)
-- [Evaluation Metrics](#evaluation-metrics)
-- [Contributing](#contributing)
-- [License](#license)
+- [Model Performance](#model-performance)
+
 
 ## Features
 - **Advanced Web Scraping**: 
