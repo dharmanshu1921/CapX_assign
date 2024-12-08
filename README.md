@@ -48,9 +48,26 @@ CapX is an advanced Python-based project that leverages machine learning and nat
 
 ## Model Performance
 
-### Evaluation Metrics
-Our Random Forest Classifier for stock movement prediction provides comprehensive performance metrics:
-https://github.com/dharmanshu1921/CapX_assign/blob/main/photos/model.png
+![Model Performance](https://github.com/dharmanshu1921/CapX_assign/blob/main/photos/model.png)
+
+The image provides detailed performance metrics for a machine learning model that predicts stock market movements based on Reddit discussions. The key highlights are:
+
+Accuracy: 0.9810
+
+Classification Report:
+- The model achieves a precision, recall, and F1-score of 1.00 for the "Stock Up" and "Stock Down" classes, indicating very high performance.
+- The "Neutral" class has slightly lower but still strong metrics, with 0.97 precision, 1.00 recall, and 0.98 F1-score.
+- The support (number of instances) for each class is provided, showing 62 for Neutral, 11 for Stock Down, and 32 for Stock Up.
+
+Confusion Matrix:
+- The confusion matrix shows the model correctly identified 62 Neutral cases, 10 Stock Down cases, and 31 Stock Up cases.
+- There was 1 misclassification between Stock Down and Stock Up.
+
+Other Metrics:
+- Accuracy, macro average, and weighted average metrics are all very high, around 0.98-0.99.
+- The model is saved as 'stock movement predictor model.pkl'.
+
+Overall, this model demonstrates excellent performance in predicting stock market movements based on Reddit data, with high accuracy, precision, recall, and F1-score across the different classes.
 
 ### Feature Importance
 Top predictive features:
