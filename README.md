@@ -164,4 +164,5 @@ streamlit run app.py
 
 ## Contact
 Maintainer: Dharmanshu Singh
+
 Email: dharmanshus1012@gmail.com
