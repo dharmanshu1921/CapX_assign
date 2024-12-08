@@ -50,31 +50,7 @@ CapX is an advanced Python-based project that leverages machine learning and nat
 
 ### Evaluation Metrics
 Our Random Forest Classifier for stock movement prediction provides comprehensive performance metrics:
-
-| Metric | Value |
-|--------|-------|
-| Accuracy | 0.72 |
-| Precision (Weighted) | 0.71 |
-| Recall (Weighted) | 0.72 |
-| F1-Score (Weighted) | 0.71 |
-
-#### Confusion Matrix
-```
-              Predicted
-              Up    Down    Neutral
-Actual   Up     65     12       23
-         Down   18     40       12
-         Neutral 22     15       43
-```
-
-#### ROC AUC Scores
-- Stock Up: 0.85
-- Stock Down: 0.80
-- Neutral: 0.78
-
-### Cross-Validation
-- K-Fold CV (5 splits): 0.71 ± 0.04 
-- Ensures model generalizability and reduces overfitting
+https://github.com/dharmanshu1921/CapX_assign/blob/main/photos/model.png
 
 ### Feature Importance
 Top predictive features:
