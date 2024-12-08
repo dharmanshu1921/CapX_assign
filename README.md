@@ -69,6 +69,11 @@ Other Metrics:
 
 Overall, this model demonstrates excellent performance in predicting stock market movements based on Reddit data, with high accuracy, precision, recall, and F1-score across the different classes.
 
+
+##Topic Analysis
+![Topics](https://github.com/dharmanshu1921/CapX_assign/blob/main/photos/topic_description.png)
+
+
 ### Feature Importance
 Top predictive features:
 1. Sentiment Polarity
