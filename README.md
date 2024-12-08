@@ -1,5 +1,5 @@
 # CapX: Reddit Stock Market Analysis and Prediction
-![Youtbe Video Link](https://youtu.be/dZ2nKdHgIsA)
+![Youtube Video Link](https://youtu.be/dZ2nKdHgIsA)
 ## Overview
 CapX is an advanced Python-based project that leverages machine learning and natural language processing to extract stock market insights from Reddit discussions. By combining web scraping, sentiment analysis, and predictive modeling, CapX offers a comprehensive approach to understanding stock market trends through social media analysis.
 
