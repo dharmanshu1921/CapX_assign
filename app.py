@@ -13,7 +13,7 @@ def load_model_and_features():
         model = joblib.load('stock_movement_predictor_model.pkl')
         
         # Load the original training data to get the exact feature names
-        file_path = '/Users/dharmanshusingh/Downloads/CapX/reddit_data_with_sentiment_and_topics.csv'  
+        file_path = 'reddit_data_with_sentiment_and_topics.csv'  
         reddit_data = pd.read_csv(file_path)
         
         # Preprocess data to get the exact feature columns used during training
